@@ -1,0 +1,15 @@
+/*
+This is a test style sheet and we see what happens
+*/
+
+nextapp.echo2.app.SelectField#noBaseClass extends itself { 
+    foreground : black;
+}
+
+nextapp.echo2.app.text.TextComponent {
+	background : red;
+}
+
+nextapp.echo2.app.TextField#useInheritance extends itself { 
+    foreground : black;
+}

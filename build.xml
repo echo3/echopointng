@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+
+<!--
+ This file is part of the Echo Point Project.  This project is a collection
+ of Components that have extended the Echo Web Application Framework.
+ 
+ EchoPoint is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ 
+ EchoPoint is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Lesser General Public License for more details.
+ 
+ You should have received a copy of the GNU Lesser General Public License
+ along with Echo Point; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--> 
+ 
+<project name="EchoPointNG" default="default" basedir=".">
+
+    <property name="version"             value="2.1.0rc5"/>
+    <property name="debug"               value="yes"/>
+
+    <!-- Directories -->
+    <property name="lib_dir"             value="lib"/>
+    <property name="dist_dir"            value="dist_jar"/>
+    <property name="build_dir"           value="dist_build"/>
+    <property name="javadoc_dir"         value="dist_javadoc"/>
+
+
+    <!-- Project Directories -->
+    <property name="src.jar"         	value="projects/jar/src"/>
+    <property name="dest.jar"        	value="projects/jar/bin"/>
+
+    <property name="src.test"        	value="projects/test/src"/>
+    <property name="dest.test"        	value="projects/test/WEB-INF"/>
+
+    <!-- Licence File -->
+    <property name="licence_doc"         value="${src.jar}/licence/COPYING"/>
+
+    <!-- Extra Properties -->
+    <property file="build.properties"/>
+       
+    <patternset id="properties_files">
+        <include name="**/*.properties"/>
+    </patternset>
+
+    <patternset id="static_files">
+        <include name="**/*gif"/>
+        <include name="**/*jpg"/>
+        <include name="**/*png"/>
+        <include name="**/*js"/>
+        <include name="**/*swf"/>
+        <include name="**/*wav"/>
+        <include name="**/*thtml"/>
+        <include name="**/*xhtml"/>
+        <include name="**/*css"/>
+        <include name="**/*bnf"/>
+        <include name="**/*html"/>
+        <include name="**/*jsp"/>
+        <include name="**/*tld"/>
+        <include name="**/*xml"/>
+        <include name="**/*properties"/>
+    </patternset>
+
+    <patternset id="lib_files">
+        <include name="*.lib"/>
+    </patternset>
+
+
+    <path id="library_class_path">
+	<pathelement location="projects/jar/bin"/>    
+        <pathelement location="${javax_servlet_jar}"/>   
+        <pathelement location="${javax_jsp_jar}"/>   
+        <pathelement location="${echo_app_jar}"/>
+        <pathelement location="${echo_webcontainer_jar}"/>        
+        <pathelement location="${echo_webrender_jar}"/>        
+        <pathelement location="${junit_jar}"/>        
+    </path>
+
+
+	<!-- ************************************************************************************************** -->
+    <target name="start">
+		<echo>
+		Building EchoPointNG
+		Version : ${version}
+		Catalina : ${CATALINA_HOME}
+
+		Libraries Used
+			Echo App        : ${echo_app_jar}
+			Echo Container  : ${echo_webcontainer_jar}
+			Echo Render     : ${echo_webcontainer_jar}
+		</echo>
+	</target>
+
+<!-- ************************************************************************************************** -->
+    <!-- Initialization Tasks -->
+    <target name="init">
+        <tstamp/>
+    </target>
+    
+
+<!-- ************************************************************************************************** -->
+    <!-- Clean -->
+    <target name="clean" 
+		description="Clears all generated files, including build directories, distributables, and documentation">
+
+        <delete dir="${build_dir}"/>
+        <delete dir="${dist_dir}"/>
+        <delete dir="${javadoc_dir}"/>
+
+		<mkdir  dir="${build_dir}"/>
+		<mkdir  dir="${build_dir}/binary"/>
+		<mkdir  dir="${build_dir}/binary/jar"/>
+		<mkdir  dir="${build_dir}/binary/war"/>
+
+   </target>
+
+
+<!-- ************************************************************************************************** -->
+    <!-- Compiles all the other compilation tasks  -->
+	<target name="compile" depends="compileJar, compileTest" 
+		description="Compiles all the other compilation tasks">
+	</target>
+    
+<!-- ************************************************************************************************** -->
+    <!-- Compile EchoPointNG library classes -->
+    <target name="compileJar" description="Compile EchoPointNG main classes.">
+
+	<delete dir="${dest.jar}"/>
+ 	<mkdir dir="${dest.jar}"/>
+        <javac srcdir="${src.jar}" destdir="${dest.jar}" debug="${debug}" source="1.4" deprecation="yes">
+            <classpath refid="library_class_path"/>
+        </javac>
+
+        <!-- Copy static content such as property files and graphic resources. -->
+         <copy todir="${dest.jar}">
+            <fileset dir="${src.jar}/ui/java"><patternset refid="properties_files"/></fileset>
+            <fileset dir="${src.jar}/ui/java"><patternset refid="static_files"/></fileset>
+            <fileset dir="${src.jar}/app/java"><patternset refid="static_files"/></fileset>
+        </copy>
+        
+	<mkdir dir="${build_dir}" />
+	<mkdir dir="${build_dir}/binary" />
+	<mkdir dir="${build_dir}/binary/jar" />
+	<mkdir dir="${build_dir}/binary/war" />
+        
+	<!-- and jar up the classes -->
+	<jar jarfile="${build_dir}/binary/jar/echopointng-${version}.jar" basedir="${dest.jar}"/>
+    </target>
+    
+<!-- ************************************************************************************************** -->
+   <!-- Compile EchoPointNG Test classes -->
+    <target name="compileTest" depends="compileJar" description="Compile the EchoPointNG Test classes.">
+
+	<delete  dir="${dest.test}/classes"/>
+	<delete  dir="${dest.test}/lib"/>
+
+	<mkdir  dir="${dest.test}/classes"/>
+	<mkdir  dir="${dest.test}/lib"/>
+
+        <copy todir="${dest.test}/lib">
+		<fileset dir="${lib_dir}">
+		</fileset>
+        </copy>
+        <copy file="${build_dir}/binary/jar/echopointng-${version}.jar" todir="${dest.test}/lib" />
+
+        <javac srcdir="${src.test}" destdir="${dest.test}/classes" debug="${debug}" source="1.4" deprecation="yes">
+            <classpath refid="library_class_path"/>
+        </javac>
+
+	<!-- copy property files into build dir -->
+        <copy todir="${dest.test}/classes/echopointng/test">
+            <fileset dir="${src.test}/echopointng/test">
+                <patternset refid="static_files"/>
+            </fileset>
+        </copy>
+
+
+	<!-- make a WAR file -->
+	<jar jarfile="${build_dir}/binary/war/echopointngtest.war" basedir="projects\test" update="no" 
+		excludes="src/**,.**">
+	</jar>
+    </target>
+    
+
+
+<!-- ************************************************************************************************** -->
+    <!-- Deploys the WAR files to Catalina Tomcat. -->
+    <target name="catalinaDeploy" description="Deploys the WAR files to Catalina Tomcat" if="CATALINA_HOME" >
+		<echo>
+		Deploying WAR files to : ${CATALINA_HOME}
+		</echo>
+		<delete dir="${CATALINA_HOME}/webapps/echopointngtest" />
+		<copy file="${build_dir}/binary/war/echopointngtest.war" todir="${CATALINA_HOME}/webapps" />
+	</target>
+<!-- ************************************************************************************************** -->
+      <target name="deploy" depends="compile, catalinaDeploy" description="Deploys the created files to tomcat as specified in build.properties."></target>
+    
+	<!-- ************************************************************************************************** -->
+    <!-- Create full API documentation -->
+    <target name="javadoc" description="Creates full JavaDoc documentation for the EchoPointNG API">
+        <delete dir="${javadoc_dir}"/>
+        <mkdir dir="${javadoc_dir}/docs"/>
+
+        <!-- Overview="${src.jar}/overview.html" -->
+        <javadoc source="1.4" sourcepath="${src.jar}/app/java" packagenames="echopointng.*" 
+                destdir="${javadoc_dir}/docs"
+                additionalparam="-breakiterator"
+                WindowTitle="EchoPointNG API Specification"
+                DocTitle="EchoPointNG&lt;br&gt;API Specification"
+                Header="&lt;b&gt;EchoPoint&lt;br&gt;${version}&lt;/b&gt;">
+					<classpath refid="library_class_path"/>
+		</javadoc>
+
+    </target>
+
+	<!-- ************************************************************************************************** -->
+    <!-- Create a source release. -->  
+    <target name="releaseSrc" depends="init" description="Create a source release.">
+        <mkdir dir="${build_dir}/source"/>
+        <copy file="${licence_doc}" todir="${build_dir}/source"/>
+        <copy todir="${build_dir}/source">
+            <fileset dir="." defaultexcludes="yes">
+                <exclude name="${build_dir}/**"/>
+                <exclude name="${dist_dir}/**"/>
+                <exclude name="${javadoc_dir}/**"/>
+                <exclude name="CVS*/**"/>
+                <exclude name="dist_website*/**"/>
+                <exclude name="temp*/**"/>
+                <exclude name="contribs*/**"/>
+                <exclude name="oldversions*/**"/>
+                <exclude name="citydesk*/**"/>
+                <exclude name="bin*/**"/>
+                <exclude name="lib*/**"/>
+                <exclude name="**/*.nbattrs"/>
+                <exclude name="**/*.jar"/>
+                <exclude name="**/*.class"/>
+                <exclude name="**/classes/*"/>
+            </fileset>
+        </copy>       
+        <mkdir dir="${dist_dir}"/>
+        <!-- Zip file -->
+        <zip zipfile="${dist_dir}/echopointng-src-${version}.zip" >
+			<zipfileset dir="${build_dir}/source" prefix="echopointng" />
+		</zip>
+    </target>
+
+	<!-- ************************************************************************************************** -->
+    <!-- Create a binary release. -->
+    <target name="releaseBin" depends="compile" description="Create a Binary release.">
+        <mkdir dir="${build_dir}/binary/lib"/>
+        <mkdir dir="${build_dir}/binary/jar"/>
+        <mkdir dir="${build_dir}/binary/war"/>
+        <copy file="${licence_doc}" todir="${build_dir}/binary"/>
+
+        <!-- Copy the third party jars into the release directory. -->
+        <copy todir="${build_dir}/binary/lib">
+            <fileset dir="${lib_dir}">
+                <patternset>
+			        <include name="*.jar"/>
+                </patternset>
+            </fileset>
+        </copy>
+
+        <!-- Zip file -->
+		<zip zipfile="${dist_dir}/echopointng-bin-${version}.zip">
+			<zipfileset dir="${build_dir}/binary" prefix="echopointng" />
+		</zip>
+    </target>
+
+
+	<!-- ************************************************************************************************** -->
+    <!-- Create a release of the JavaDocs -->
+    <target name="releaseJavaDoc" depends="javadoc" description="Create a release of the JavaDocs">
+        <mkdir dir="${dist_dir}"/>
+        <copy file="${licence_doc}" todir="${javadoc_dir}"/>
+        <!-- Zip file -->
+        <zip zipfile="${dist_dir}/echopointng-docs-${version}.zip" >
+			<zipfileset dir="${javadoc_dir}" prefix="echopointng" />
+		</zip>
+    </target>
+
+	<!-- ************************************************************************************************** -->
+    <target name="release" 
+            depends="start,releaseSrc,releaseJavaDoc,releaseBin"
+            description="Create all release packages">
+		<echo>
+		Release Version : ${version}
+		</echo>
+	</target>
+
+	<!-- ************************************************************************************************** -->
+    <target name="default" 
+            depends="start,clean,compile,release"
+            description="Default build">
+		<echo>
+		Done Building EchoPointNG 
+		Version : ${version}
+		</echo>
+	</target>
+</project>

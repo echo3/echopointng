@@ -1,0 +1,49 @@
+/*
+This is a test style sheet and we see what happens
+*/
+
+nextapp.echo2.app.Component#light { 
+    background : white;
+    font : arial, bold|italic, 10;
+    locale : en_US;
+}
+
+nextapp.echo2.app.Component#dark extends light { 
+    background : black;
+    font : arial, bold|italic, 10;
+}
+
+nextapp.echo2.app.Component { 
+    background : orange;
+    visible : false;
+}
+
+nextapp.echo2.app.Component#extraInfo extends itself { 
+    background : white;
+    foreground : black;
+}
+
+nextapp.echo2.app.Label { 
+    foreground : black;
+    background : red;
+    font : "sans serif", plain, 8;
+}
+
+nextapp.echo2.app.SelectField#noBaseClass extends itself { 
+    foreground : black;
+}
+
+// buttons are next
+nextapp.echo2.app.Button#classic {
+    // what about comments in the middle.  They should be okay
+    foreground : blue;
+    rolloverEnabled : true;
+    rolloverForeground : #eef971;
+}
+
+nextapp.echo2.app.Button#modern extends light {
+    foreground : red;
+    rolloverEnabled : false;
+    rolloverForeground : #ffaa12;
+}
+

@@ -1,0 +1,6 @@
+
+.externalClassDotted {
+	color : pink;
+	border : thin black dotted;
+	font-weight : bold;
+}

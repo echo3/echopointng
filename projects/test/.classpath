@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/EchoPointNG"/>
+	<classpathentry kind="var" path="SERVLET_LIB"/>
+	<classpathentry kind="var" path="JETTY_LIB"/>
+	<classpathentry kind="var" path="JETTY_START"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Echo2 Trunk"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

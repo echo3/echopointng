@@ -1,0 +1,19 @@
+echopointng.Tree {
+	foreground : Color {
+		red : 255;
+		green : 255;
+		blue : 255;
+	}
+	
+	background : Color {
+		rgb : 255;
+	}
+}
+
+nextapp.echo2.app.Label {
+	icon : HttpImageReference {
+		uri : '/image/testGif.png';
+		width : 9px;
+		height : 12pt;
+	}
+}

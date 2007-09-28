@@ -1,0 +1,15 @@
+echopointng.TemplatePanel#inst1 {
+	//
+	// our layout data requires a template source
+	templateDataSource : echopointng.template.JspTemplateDataSource {
+		jspPath : '/jsp/test1.jsp';
+		//
+		// and we can provide caching hints
+		cachingHints : echopointng.template.SimpleTemplateCachingHints {
+			accessTimeout : 10000;
+			timeToLive    : 20000;
+		}
+	}
+	foreground : red;
+}
+

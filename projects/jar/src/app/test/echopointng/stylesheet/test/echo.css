@@ -1,0 +1,155 @@
+/**
+ * This CSS file contains all the Echo components
+ * that have style sheet support.  
+ *
+ * It contains the style attribute names and also  valid example values.
+ *
+ * Note : Class names are case sensitive, however attribute names and attribute
+ * values are NOT case sensitive.
+ *
+ * Against each style attribute has a comment indicating the type of
+ * value expected.  Attribute specific symbolic constants are available. 
+ */
+
+/** Component */
+nextapp.echo.Component {
+    background : #ffaacc;                           // Color
+    foreground : color(255,128,212);                // Color
+    font :   font("Sans Serif",bold|italic,12);     // Font
+}
+
+/** AbstractButton */
+nextapp.echo.AbstractButton {
+    horizontalAlignment : LEFT;                     // EchoConstants : LEFT, CENTER, RIGHT
+    horizontalTextPosition : right;                 // EchoConstants : LEFT, CENTER, RIGHT
+    iconTextMargin : 2;                             // int
+    rolloverBackground : orange;                    // Color
+    rolloverEnabled :  true;                        // boolean
+    rolloverFont : "sans serif",underline,12;       // Font
+    rolloverForeground : rgb(255,128,128);          // Color
+    verticalAlignment : TOP;                        // EchoConstants : TOP, CENTER, BOTTOM 
+    verticalTextPosition : CENTER;                  // EchoConstants : TOP, CENTER, BOTTOM 
+}
+
+/** AbstractPane */
+nextapp.echo.AbstractPane {
+    resizable : true;                               // boolean
+}
+
+
+/** ContainerPane */
+nextapp.echo.ContainerPane {
+    orientation : vertical;                         // ORIENTATION_HORIZONTAL, HORIZONTAL, ORIENTATION_VERTICAL, VERTICAL
+}
+
+
+/** ContentPane */
+nextapp.echo.ContentPane {
+    backgroundImage : image("/images/back.png");    // ImageReference
+    backgroundImageRepeat : REPEAT;                 // REPEAT, REPEAT_HORIZONTAL, REPEAT_VERTICAL, NO_REPEAT
+    height : 200;                                   // int
+    insets : insets(25,5,25,10);                    // Insets
+    scrollBarPolicy : ALWAYS;                       // ALWAYS, AUTO, NEVER
+    width : 400;                                    // int
+}
+
+
+/** Grid */
+nextapp.echo.Grid {
+    borderColor : black;							// Color
+    borderSize : 2;                                 // int
+    cellMargin : 2;                                 // int
+    columnWidths : int(10,50,5,20);                 // int array
+    height : 70;                                    // int
+    heightUnits :PIXELS;                            // PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+                                                    //
+    rowHeights : int(5,5,7);                        // int array
+    width : 100;                                    // int
+    widthUnits : percent;                           // PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+                                                    //
+}
+
+
+/** Grid.Cell */
+nextapp.echo.Grid.Cell {
+    backgroundImage : image("/images/curly.jpg");   // Image
+    horizontalAlignment : LEFT;                     // EchoConstants : LEFT, CENTER, RIGHT
+    insets : insets(0);                             // Insets
+    verticalAlignment : bottom;                     // EchoConstants : TOP, CENTER, BOTTOM;
+}
+
+
+/** Label */
+nextapp.echo.Label {
+    horizontalAlignment : LEFT;                     // EchoConstants : LEFT, CENTER, RIGHT
+    horizontalTextPosition : LEFT;                  // EchoConstants : LEFT, CENTER, RIGHT
+    iconTextMargin : 2;                             // int
+    verticalAlignment : TOP;                        // EchoConstants : TOP, CENTER, BOTTOM;
+    verticalTextPosition : BOTTOM;                  // EchoConstants : TOP, CENTER, BOTTOM;
+}
+
+
+/** ListBox */
+nextapp.echo.ListBox {
+    visibleRowCount : 4;                            // int
+}
+
+
+/** Panel */
+nextapp.echo.Panel {
+    horizontalAlignment : top;                      // EchoConstants : LEFT, CENTER, RIGHT
+    insets : insets(20,20);                         // Insets
+    verticalAlignment : bottom;                     // EchoConstants : TOP, CENTER, BOTTOM;
+}
+
+
+/** Table */
+nextapp.echo.Table {
+    borderColor : #ccffff;                          // Color
+    borderSize : 1;                                 // int
+    cellMargin : 5;                                 // int
+    columnWidths : int(10,20,25,20);                // int array
+    height : 70;                                    // int
+    heightUnits : PIXELS;                           // PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+                                                    //
+    rowHeights : int(5,5,7);                        // int array
+    width : 100;                                    // int
+    widthUnits : %;                           		// PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+                                                    //
+}
+
+
+/** ToggleButton */
+nextapp.echo.ToggleButton {
+    horizontalStateAlignment : left;                // EchoConstants : LEFT, CENTER, RIGHT
+    horizontalStatePosition : left;                 // EchoConstants : LEFT, CENTER, RIGHT
+    stateMargin : 2;                                // int
+    verticalStateAlignment : top;                   // EchoConstants : TOP, CENTER, BOTTOM
+    verticalStatePosition : bottom;                 // EchoConstants : TOP, CENTER, BOTTOM
+}
+
+
+/** Window */
+nextapp.echo.Window {
+    height : 350;                                   // int
+    width : 400;                                    // int
+}
+
+
+/** TextComponent */
+nextapp.echo.text.TextComponent {
+    borderColor : black;                            // Color
+    borderSize : 1;                                 // int
+    borderStyle : SOLID;                            // Default, None, Solid, Inset
+    columns : 80;                                   // int
+    lineWrap : false;                               // boolean
+    rows : 5;                                       // int
+}

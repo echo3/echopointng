@@ -1,0 +1,291 @@
+/**
+ * This CSS file contains all the EchoPoint components
+ * that have style sheet support.  
+ *
+ * It contains the style attribute names and also  valid example values.
+ *
+ * Note : Class names are case sensitive, however attribute names and attribute
+ * values are NOT case sensitive.
+ *
+ * Against each style attribute has a comment indicating the type of
+ * value expected.  Attribute specific symbolic constants are available. 
+ */
+
+/** ChartPanel */
+echopoint.ChartPanel {
+    height : 300;                                   // int
+    width : 400;                                    // int
+}
+
+/** ColorChooser */
+echopoint.ColorChooser {
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+    insets : insets(1);								// Insets
+    cellHeight : 20;								// int
+    cellwidth : 30;									// int
+    cellSpacing : 10;								// int
+    cellSpacingColor : #336699;						// Color
+    cellsPerRow : 8;								// int
+    selectedColor : red;							// Color
+}
+
+
+/** DatePicker */
+echopoint.DatePicker {
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+    calendarBackground : #886677;                   // Color
+    calendarFont : font(verdana,bold,12);           // Font
+    calendarForeground : white;                     // Color
+    calendarNonMonthForeground : #ccddee;           // Color
+    calendarRolloverBackground : #336699;           // Color
+    calendarRolloverForeground : orange;            // Color
+    navigationBackground : #336699;                 // Color
+    navigationFont : font(verdana,bold,12);         // Font
+    navigationForeground : #ffee00;                 // Color
+    navigationRolloverBackground : #336699;     	// Color
+    navigationRolloverForeground : #00000;         // Color
+    selectedBackground : #336699;                  	// Color
+    selectedFont : font(verdana,bold,12);         	// Font
+    selectedForeground : pink;	                 	// Color
+    selectedRolloverBackground : #336699;     		// Color
+    selectedRolloverForeground : #dd00ff;         	// Color
+}
+
+/** EmbeddedObject */
+echopoint.EmbeddedObject {
+	classId : "xyzclassId";							// String
+	codeBase : "xyzcodebase";						// String
+	codeType : "xyzcodeType";						// String
+	contentType : "xyzContentType";					// String
+	embeddedTagUsed : true;							// boolean
+	height : 100;									// int
+	heightUnits : PIXELS;                           // PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+                                                    //
+	pluginsPage : pluginsPageValue;                 // String
+	src : srcValue;                  				// String
+	standBy : "standByValue";          				// String
+	width : 200;									// int
+	widthUnits : PIXELS;                           	// PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+}
+
+/** EmbeddedPane */
+echopoint.EmbeddedPane { 
+	border : true;									// boolean
+	height : 100;									// int
+	heightUnits : PIXELS;                           // PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+                                                    //
+	insets : insets(1);								// Insets
+	scrollBarPolicy	: always;						// ALWAYS, AUTO, NEVER
+	width : 200;									// int
+	widthUnits : PIXELS;                           	// PIXEL_UNITS, PIXELS, px,
+                                                    // PERCENT_INDIVIDUAL_PIXEL_TOTAL_UNITS, px%,
+                                                    // PERCENT_UNITS, PERCENT, %
+}	
+	
+/** ExitButton */
+echopoint.ExitButton { 
+	exitMode : false;								// boolean
+	uri : "echopoint.sourceforge.net"				// String
+}
+
+/** ExpandableSection */
+echopoint.ExpandableSection { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+	expanded : true;								// boolean
+	insets : insets(25,25);							// Insets	
+}
+
+/** FontChooser */
+echopoint.FontChooser { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+    changeSelectField : true;						// boolean
+	insets : insets(25,25);							// Insets	
+	selectedFont : Arial,plain,8;					// Font
+}
+
+/** GroupBox */
+echopoint.GroupBox { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+	insets : insets(25,25);							// Insets	
+	title : "box title";							// Title
+}
+
+/** HidingSlidingPanel */
+echopoint.HidingSlidingPanel { 
+	expanded : true;								// boolean
+	hidingAlignment : left;							// EchoConstants : TOP, LEFT;
+	//offIcon : image("/images/off.gif");			// ImageReference
+	offIcon : null;									// ImageReference
+	//onIcon : image("/images/on.gif");				// ImageReference
+	onIcon : null;									// ImageReference
+	xy : 200;										// int
+}
+
+/** ImageMap */
+echopoint.ImageMap { 
+	image : image("/images/off.gif");				// ImageReference
+}
+
+/** ListSection */
+echopoint.ListSection { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+    bullets : circle;								// "CIRCLE", "DECIMAL", "DECIMAL_LEADING_ZERO", "DEFAULT", "DISC", 
+    												// "LOWER_ALPHA", "LOWER_GREEK", "LOWER_LATIN",	"LOWER_ROMAN",
+    												// "NONE", "SQUARE", 
+    												// "UPPER_ALPHA", "UPPER_LATIN", "UPPER_ROMAN",
+    												//
+	//bulletsImage : image("/images/bullets.gif");	// ImageReference
+	bulletsImage : null;							// ImageReference
+	insets : insets(25,25);							// Insets	
+	ordering : unordered;							// ORDERED, UNORDERED
+}
+
+
+/** Menu */
+echopoint.Menu { 
+	submenuImage : image("/images/sub.gif");		// ImageReference
+	submenuImageAlignment : BOTTOM;					// EchoConstants : LEFT, RIGHT, TOP, BOTTOM
+}
+	
+/** MenuBar */
+echopoint.MenuBar { 
+	clickToOpen : true;								// boolean
+	fixedPosition : true;							// boolean
+	horizontal  : true;								// boolean
+	keepAlive : true;								// boolean
+	scrollWithPage : true;							// boolean
+	clickToOpen : true;								// boolean
+	left : 10;										// int
+	top : 20;										// int
+	width : 100;									// int
+}
+
+
+/** MenuItem */
+echopoint.MenuItem { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+}
+
+/** NewsTicker */
+echopoint.NewsTicker { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+    delay : 10;										// int
+    orientation : vertical;							// VERTICAL, HORIZONTAL
+    pixelsPerScroll : 1;							// int
+}
+
+/** PickList */
+echopoint.PickList { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+	insets : insets(25,25);							// Insets	
+    orientation : vertical;							// VERTICAL, HORIZONTAL
+}
+
+/** ProgressBar */
+echopoint.ProgressBar { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+    completedColor : #2233DD;						// Color
+    height : 20;									// int
+    maximum : 100;									// int
+    minimum : 1;									// int
+    numberOfBlocks : 10;							// int
+    orientation : horizontal;						// VERTICAL, HORIZONTAL
+    progressString : "working...";					// String
+    progressStringPainted : true;					// boolean
+    uncompletedColor : #ccbbdd;						// Color
+    value : 30;										// int
+    width : 100;									// int
+}
+    
+/** ScrollablePanel */
+echopoint.ScrollablePanel { 
+	bottom : 100;									// int
+	clipRect : rect(10,10,100,100);					// ClipRect
+	height : 200;									// int
+	left : 5;										// int
+	position : absolute;							// ABSOLUTE, RELATIVE, FLOW
+	right : 5;										// int
+    scrollBarPolicy : auto;                       	// ALWAYS, AUTO, NEVER
+    top : 100;										// int
+    width : 50;										// int
+    zindex : 5;										// int
+}
+
+/** SpinField */
+echopoint.SpinField {
+    maximum : 100;									// int
+    minimum : 1;									// int
+    readOnly : true;								// boolean
+    wrapAllowed : false;							// boolean
+}
+
+/** TabbedPane */
+echopoint.TabbedPane { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+	height : 200;									// int
+	inactiveBackground : #55ffdd;					// Color
+	inactiveFont : font(TIMES,italic,12);			// Font
+	inactiveForeground : #c5ffdd;					// Color
+	inactiveRolloverBackground : #c5ffdd;			// Color
+	inactiveRolloverForeground : #c5ffdd;			// Color
+    scrollBarPolicy : auto;                       	// ALWAYS, AUTO, NEVER
+    width : 300;									// int
+}
+
+/** TitleBar */
+echopoint.TitleBar { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+    //cornerImages : corners("/c1.gif","/c2.gif"); 	// CornerImages
+    cornerImages : null;								// CornerImages
+    expanded : true;								// boolean
+    horizontalAlignment : LEFT;                     // EchoConstants : LEFT, CENTER, RIGHT
+    verticalAlignment : TOP;                        // EchoConstants : TOP, CENTER, BOTTOM 
+}
+
+/** Tree */
+echopoint.Tree { 
+}
+
+
+
+/** WizardPane */
+echopoint.WizardPane { 
+    borderColor : #ffddcc;                          // Color
+    borderSize : 1;                                 // int
+	height : 200;									// int
+	insets : insets(3);								// Insets
+    scrollBarPolicy : auto;                       	// ALWAYS, AUTO, NEVER
+    width : 250;									// int
+}
+
+/** AbstractScrollableComponent */
+echopoint.positionable.AbstractScrollableComponent { 
+	bottom : 100;									// int
+	clipRect : rect(10,10,100,100);					// ClipRect
+	height : 200;									// int
+	left : 5;										// int
+	position : absolute;							// ABSOLUTE, RELATIVE, FLOW
+	right : 5;										// int
+    scrollBarPolicy : auto;                       	// ALWAYS, AUTO, NEVER
+    top : 100;										// int
+    width : 50;										// int
+    zindex : 5;										// int
+}
