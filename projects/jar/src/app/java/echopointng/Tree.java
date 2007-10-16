@@ -355,11 +355,13 @@ public class Tree extends AbleComponent {
 	public static final Style DEFAULT_STYLE;
 	static {
 		MutableStyleEx style = new MutableStyleEx();
+		style.setProperty(PROPERTY_CELL_RENDERER, new DefaultTreeCellRenderer());
 		style.setProperty(PROPERTY_ROOT_VISIBLE, true);
 		style.setProperty(PROPERTY_LINES_DRAWN, true);
 		style.setProperty(PROPERTY_SHOWS_ROOT_HANDLES, true);
 		style.setProperty(PROPERTY_SCROLL_INTO_VIEW_USED, true);
 		style.setProperty(PROPERTY_NULL_ACTION_COMMANDS_RAISE_EVENTS, true);
+		style.setProperty(PROPERTY_TREE_ICONS, new DefaultTreeIcons() );
 
 		DEFAULT_STYLE = style;
 	}
@@ -407,8 +409,6 @@ public class Tree extends AbleComponent {
 		expansionForwarder = new TreeExpansionHandler();
 		addTreeExpansionListener(expansionForwarder);
 
-		setCellRenderer(new DefaultTreeCellRenderer());
-		setTreeIcons(new DefaultTreeIcons());
 		setModel(newModel);
 	}
 
@@ -694,7 +694,8 @@ public class Tree extends AbleComponent {
 	 * @see echopointng.tree.TreeCellRenderer
 	 */
 	public TreeCellRenderer getCellRenderer() {
-		return (TreeCellRenderer) getProperty(PROPERTY_CELL_RENDERER);
+    return (TreeCellRenderer) getRenderProperty(PROPERTY_CELL_RENDERER,
+        DEFAULT_STYLE.getProperty(PROPERTY_CELL_RENDERER));
 	}
 
 	/**
@@ -901,7 +902,8 @@ public class Tree extends AbleComponent {
 	 * @see echopointng.tree.TreeIcons
 	 */
 	public TreeIcons getTreeIcons() {
-		return (TreeIcons) getProperty(PROPERTY_TREE_ICONS);
+    return (TreeIcons) getRenderProperty(
+        PROPERTY_TREE_ICONS, DEFAULT_STYLE.getProperty(PROPERTY_TREE_ICONS));
 	}
 
 	/**

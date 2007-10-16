@@ -46,8 +46,7 @@ public class TreeActionEventEx extends ActionEventEx {
 	 * @param source
 	 * @param command
 	 * @param metaKeyInfo
-	 * @param column
-	 * @param row
+	 * @param treeNode
 	 */
 	public TreeActionEventEx(Object source, String command, int metaKeyInfo, Object treeNode) {
 		super(source, command, metaKeyInfo);

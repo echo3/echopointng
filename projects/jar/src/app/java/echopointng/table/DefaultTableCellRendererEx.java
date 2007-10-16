@@ -63,7 +63,7 @@ public class DefaultTableCellRendererEx extends DefaultTableCellRenderer impleme
 	}
 
 	/**
-	 * @see echopointng.table.TableCellRendererEx#isActionCausingCells(nextapp.echo2.app.Table, int, int)
+	 * @see echopointng.table.TableCellRendererEx#isActionCausingCell(nextapp.echo2.app.Table, int, int)
 	 */
 	public boolean isActionCausingCell(Table table, int column, int row) {
 		return true;
