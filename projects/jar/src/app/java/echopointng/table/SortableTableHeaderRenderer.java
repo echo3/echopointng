@@ -119,7 +119,7 @@ public class SortableTableHeaderRenderer implements TableCellRenderer {
 		button.setBackground(getBackground());
 		button.setBorder(getBorder());
 		button.setTextPosition(new Alignment(Alignment.LEFT, Alignment.DEFAULT));
-		button.setWidth(new ExtentEx("100%"));
+//		button.setWidth(new ExtentEx("100%"));
 		ImageReference icon = null;
 		if (model.getCurrentSortColumn() == column) {
 			int sortDirective = model.getSortDirective(column);
