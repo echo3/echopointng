@@ -3,6 +3,16 @@
 EchoPointNG Read Me
 ====================================================
 
+------ Version 2.1.0 rc7 --------------
+
+Updated: Echo2 JARS to the latest version.
+
+Fixed 0000094: BorderEx now working with TableEx.  Change made in echopointng.ui.syncpeer.TableExPeer.
+
+------ Version 2.1.0 rc6 --------------
+
+Fixed 0000075: SortableTable's header line renders shifted in Internet Explorer.
+
 
 ------ Version 2.1.0 rc5 --------------
 
