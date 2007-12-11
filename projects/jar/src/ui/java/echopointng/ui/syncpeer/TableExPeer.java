@@ -669,7 +669,7 @@ public class TableExPeer implements ActionProcessor, ComponentSynchronizePeer, D
 
 			CssStyle style = new CssStyle();
 			if (!isScrollable) {
-				BorderRender.renderToStyle(style, (Border) rc.getRP(Table.PROPERTY_BORDER, fallbackStyle));
+                Render.asBorder(style, (Border) rc.getRP(Table.PROPERTY_BORDER, fallbackStyle));
 			} else {
 				Element cellDivE = document.createElement("div");
 				tdCellE.appendChild(cellDivE);
