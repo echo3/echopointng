@@ -324,9 +324,9 @@ public class DefaultProgressBarRenderer implements ProgressBarRenderer, java.io.
 			_drawBlocks(g, (int) Math.floor(numBlocks), blockWidth, blockHeight, partialDraw, clrCompleted);
 		}
 
-		boolean isPainted = Boolean.TRUE.equals(getRP(pb,ProgressBar.PROPERTY_PROGRESS_STRING_PAINTED,fallbackStyle));
+		boolean isPainted = Boolean.TRUE.equals(getRP(pb,ProgressBar.PROPERTY_PROGRESS_STRING_PAINTED, fallbackStyle));
 		if (isPainted) {
-			String text = (String) getRP(pb,ProgressBar.PROPERTY_PROGRESS_STRING_PAINTED,fallbackStyle);
+			String text = (String) getRP(pb,ProgressBar.PROPERTY_PROGRESS_STRING, fallbackStyle);
 			_drawText(g, width, height, text, clrForeGround);
 		}
 
