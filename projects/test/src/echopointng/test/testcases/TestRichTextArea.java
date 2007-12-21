@@ -176,4 +176,14 @@ public class TestRichTextArea extends TestCaseBaseNG {
 		//ex.add(rta);
 		return w;
 	}
+    
+    public Component testAddToColumn() {
+        RichTextArea rta = new RichTextArea();
+        rta.setText("test add RichTextArea to Column");
+        
+        Column column = new Column();
+        column.add(rta);
+        return column;
+    }
+    
 }

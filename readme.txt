@@ -3,6 +3,11 @@
 EchoPointNG Read Me
 ====================================================
 
+------ Version 2.1.0 rc8 --------------
+
+Fixed 0000079: Fixed memory leak due to typo.
+Fixed 0000095: Added test case TestRichTextArea.testAddToColumn, closed bug.
+
 ------ Version 2.1.0 rc7 --------------
 
 Updated: Echo2 JARS to the latest version.

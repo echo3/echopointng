@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 
 <!--
  This file is part of the Echo Point Project.  This project is a collection
@@ -21,7 +21,7 @@
  
 <project name="EchoPointNG" default="default" basedir=".">
 
-    <property name="version"             value="2.1.0rc7"/>
+    <property name="version"             value="2.1.0rc8"/>
     <property name="debug"               value="yes"/>
 
     <!-- Directories -->

@@ -106,7 +106,7 @@ public class AutoLookupService implements Service {
 	 *            being notified of external events.
 	 */
 	public synchronized void deregister(AutoLookupTextFieldEx textFieldEx) {
-		interestedParties.remove(textFieldEx);
+		interestedParties.remove("c_" + textFieldEx.getRenderId());
 	}
 
 	/**
