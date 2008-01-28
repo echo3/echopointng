@@ -3,6 +3,11 @@
 EchoPointNG Read Me
 ====================================================
 
+------ Version 2.2.0 rc1 --------------
+
+Added features to PageableTableModel to turn on/off rowsPerPage selector
+Added features to PageableTableNavigation to set page label
+
 ------ Version 2.1.0 rc8 --------------
 
 Fixed 0000079: Fixed memory leak due to typo.

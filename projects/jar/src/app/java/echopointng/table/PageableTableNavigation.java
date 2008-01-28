@@ -54,6 +54,7 @@ public class PageableTableNavigation extends Row {
     private PageableTableModel model;
     private static final Object[] ROWS_PER_PAGE_OPTIONS = new String[]{"10","25","50","100"};
     private static final List ROWS_PER_PAGE_LIST = Arrays.asList(ROWS_PER_PAGE_OPTIONS);
+    private Label pageLabel = new Label();
     
     public PageableTableNavigation(Table table){
         this.model = (PageableTableModel)table.getModel();
@@ -70,7 +71,10 @@ public class PageableTableNavigation extends Row {
     protected void doLayout() {
         setCellSpacing(new Extent(10));
         add(getPreviousButton());
-        add(getResultsPerPageSelect());
+
+        if(model.getRowsPerPageShowSelector()) {
+            add(getResultsPerPageSelect());
+        }
         add(getPageLabel());
         add(getPageSelect());
         add(getPageCountLabel());
@@ -110,8 +114,11 @@ public class PageableTableNavigation extends Row {
     }
     
     private Label getPageLabel() {
-        Label label = new Label(" Page ");
-        return label;
+        return pageLabel;
+    }
+    
+    public void setPageLabel(String s) {
+        pageLabel = new Label(s);
     }
     
     private Label getPageCountLabel() {

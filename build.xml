@@ -21,7 +21,7 @@
  
 <project name="EchoPointNG" default="default" basedir=".">
 
-    <property name="version"             value="2.1.0rc8"/>
+    <property name="version"             value="2.2.0rc1"/>
     <property name="debug"               value="yes"/>
 
     <!-- Directories -->
@@ -87,7 +87,7 @@
 		<echo>
 		Building EchoPointNG
 		Version : ${version}
-		Catalina : ${CATALINA_HOME}
+		Tomcat : ${TOMCAT_HOME}
 
 		Libraries Used
 			Echo App        : ${echo_app_jar}
@@ -189,16 +189,16 @@
 
 
 <!-- ************************************************************************************************** -->
-    <!-- Deploys the WAR files to Catalina Tomcat. -->
-    <target name="catalinaDeploy" description="Deploys the WAR files to Catalina Tomcat" if="CATALINA_HOME" >
+    <!-- Deploys the WAR files to Tomcat -->
+    <target name="tomcatDeploy" description="Deploys the WAR files to Tomcat" if="TOMCAT_HOME" >
 		<echo>
-		Deploying WAR files to : ${CATALINA_HOME}
+		Deploying WAR files to : ${TOMCAT_HOME}
 		</echo>
-		<delete dir="${CATALINA_HOME}/webapps/echopointngtest" />
-		<copy file="${build_dir}/binary/war/echopointngtest.war" todir="${CATALINA_HOME}/webapps" />
+		<delete dir="${TOMCAT_HOME}/webapps/echopointngtest" />
+		<copy file="${build_dir}/binary/war/echopointngtest.war" todir="${TOMCAT_HOME}/webapps" />
 	</target>
 <!-- ************************************************************************************************** -->
-      <target name="deploy" depends="compile, catalinaDeploy" description="Deploys the created files to tomcat as specified in build.properties."></target>
+      <target name="deploy" depends="compile, tomcatDeploy" description="Deploys the created files to tomcat as specified in build.properties."></target>
     
 	<!-- ************************************************************************************************** -->
     <!-- Create full API documentation -->

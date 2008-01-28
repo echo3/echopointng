@@ -58,6 +58,8 @@ public class DefaultPageableSortableTableModel extends DefaultSortableTableModel
 	private int currentPage = DEFAULT_INITAL_PAGE_INDEX;
 
 	private int rowsPerPage = DEFAULT_ROWS_PER_PAGE;
+    
+    private boolean showRowsPerPage = true;
 
 	/**
 	 * Constructs a <code>DefaultPageableSortableTableModel</code> with the
@@ -186,6 +188,26 @@ public class DefaultPageableSortableTableModel extends DefaultSortableTableModel
 		return rowsPerPage;
 	}
 
+    /**
+     * Sets whether to show the selector for viewable rows per each
+     * displayed page.
+     * 
+     * @param showSelector
+     */
+    public void setRowsPerPageShowSelector(boolean showSelector) {
+        showRowsPerPage = showSelector;
+    }
+
+    /**
+     * Gets whether to show the selector for viewable rows per each
+     * displayed page.
+     * 
+     * @return showSelector
+     */
+    public boolean getRowsPerPageShowSelector() {
+        return showRowsPerPage;
+    }
+    
 	/**
 	 * @see echopointng.table.PageableTableModel#getTotalRows()
 	 */
