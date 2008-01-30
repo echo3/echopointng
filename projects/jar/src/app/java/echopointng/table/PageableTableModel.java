@@ -56,14 +56,6 @@ public interface PageableTableModel extends TableModel {
 	 */
 	public int getRowsPerPage();
 
-    /**
-     * Get whether to show the selector for viewable rows per each
-     * displayed page.
-     * 
-     * @return showSelector
-     */
-    public boolean getRowsPerPageShowSelector();
-    
 	/**
 	 * Returns the total number of pages this model contains based on total rows /
 	 * rows per page. Note it will always be a number greater than or equal to 1
@@ -110,15 +102,7 @@ public interface PageableTableModel extends TableModel {
 	 *            the number of rows to display
 	 */
 	public void setRowsPerPage(int rows);
-
-    /**
-     * Sets whether to show the selector for viewable rows per each
-     * displayed page.
-     * 
-     * @param showSelector
-     */
-    public void setRowsPerPageShowSelector(boolean showSelector);
-    
+  
 	/**
 	 * This converts the unpaged model row index into the equivalent paged view
 	 * row index. When the underlying TableModel is being paged, you can use

@@ -44,17 +44,19 @@ import nextapp.echo2.app.event.ActionListener;
  * A controller for tables containing 
  * <code>PageableTableModel</code> backed tables.
  * 
- * BUGBUG: Need to support internationalization
- * 
  * @author Jason Dalton
- * 
+ * @author Jesse Chan
  */
 public class PageableTableNavigation extends Row {
 
     private PageableTableModel model;
     private static final Object[] ROWS_PER_PAGE_OPTIONS = new String[]{"10","25","50","100"};
     private static final List ROWS_PER_PAGE_LIST = Arrays.asList(ROWS_PER_PAGE_OPTIONS);
-    private Label pageLabel = new Label();
+
+    private boolean rowsPerPageSelectShow = true;   
+    private Button previousButton;
+    private Button nextButton;
+    private Label pageLabel;
     
     public PageableTableNavigation(Table table){
         this.model = (PageableTableModel)table.getModel();
@@ -70,10 +72,10 @@ public class PageableTableNavigation extends Row {
     
     protected void doLayout() {
         setCellSpacing(new Extent(10));
-        add(getPreviousButton());
 
-        if(model.getRowsPerPageShowSelector()) {
-            add(getResultsPerPageSelect());
+        add(getPreviousButton());
+        if(getRowsPerPageSelectShow()) { 
+            add(getRowsPerPageSelect()); 
         }
         add(getPageLabel());
         add(getPageSelect());
@@ -86,9 +88,11 @@ public class PageableTableNavigation extends Row {
         doLayout();
     }
     
-    protected PageableTableModel getModel(){
+    protected PageableTableModel getModel() {
         return model;
     }
+    
+    // page select
     
     private SelectField getPageSelect() {
         String[] pages = new String[model.getTotalPages()];
@@ -112,46 +116,82 @@ public class PageableTableNavigation extends Row {
             }
         };
     }
+
+    // page label
     
     private Label getPageLabel() {
+        if(pageLabel == null) {
+            Label label = new Label(" Page ");
+            setPageLabel(label);
+        }
         return pageLabel;
     }
     
-    public void setPageLabel(String s) {
-        pageLabel = new Label(s);
+    public void setPageLabel(Label label) {
+        pageLabel = label;
     }
+    
+    // page count label
     
     private Label getPageCountLabel() {
         Label label = new Label();
         label.setText(" of " + (model.getTotalPages()) + " ");
-        setPageCountLabelText();
+//        setPageCountLabelText();
         return label;
     }
     
-    private void setPageCountLabelText() {
+    private void setPageCountLabel(Label label) {
+// not used?        
     }
+           
+    // rows per page select
     
-    private Button getPreviousButton(){
-        Button previousButton = new Button(" < Previous ");
-        previousButton.addActionListener(getPreviousListener());
-        return previousButton;
-    }
-    
-    private SelectField getResultsPerPageSelect(){
+    private SelectField getRowsPerPageSelect() {
         SelectField resultsPerPage = new SelectField(ROWS_PER_PAGE_OPTIONS);
         resultsPerPage.addActionListener(getRowsPerPageListener());
         int index = ROWS_PER_PAGE_LIST.indexOf("" + model.getRowsPerPage());
         resultsPerPage.setSelectedIndex(index);
         return resultsPerPage;
     }
+
+    private boolean getRowsPerPageSelectShow() {
+        return rowsPerPageSelectShow;
+    }
+
+    public void setRowsPerPageSelectShow(boolean show) {
+        rowsPerPageSelectShow = show;
+    }   
+
+    private ActionListener getRowsPerPageListener() {
+        return new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SelectField select = (SelectField)e.getSource();
+                Integer selected = new Integer((String)select.getSelectedItem());
+                getModel().setRowsPerPage(selected.intValue());
+                getModel().setCurrentPage(0);
+                reset();
+            }
+        };
+    }
+
+    // previous button
     
-    private Button getNextButton(){
-        Button previousButton = new Button(" Next > ");
-        previousButton.addActionListener(getNextListener());
+    private Button getPreviousButton() {
+        if(previousButton == null) {
+            setPreviousButton(new Button("< Previous"));
+        }
         return previousButton;
     }
     
-    private ActionListener getPreviousListener(){
+    public void setPreviousButton(Button button) {
+        if(previousButton != null) {
+            previousButton.removeActionListener(getPreviousListener());
+        }
+        previousButton = button;
+        previousButton.addActionListener(getPreviousListener());       
+    }
+   
+    private ActionListener getPreviousListener() {
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (getModel().getCurrentPage() > 0) {
@@ -162,7 +202,24 @@ public class PageableTableNavigation extends Row {
         };
     }
     
-    private ActionListener getNextListener(){
+    // next button
+    
+    private Button getNextButton() {
+        if(nextButton == null) {
+            setNextButton(new Button("Next >"));
+        }
+        return nextButton;
+    }
+
+    public void setNextButton(Button button) {
+        if(nextButton != null) {
+            nextButton.removeActionListener(getNextListener());
+        }
+        nextButton = button;
+        nextButton.addActionListener(getNextListener());       
+    }
+      
+    private ActionListener getNextListener() {
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
              	int currentPage = getModel().getCurrentPage(); 
@@ -174,17 +231,5 @@ public class PageableTableNavigation extends Row {
             }
         };
     }
-    
-    private ActionListener getRowsPerPageListener(){
-        return new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                SelectField select = (SelectField)e.getSource();
-                Integer selected = new Integer((String)select.getSelectedItem());
-                getModel().setRowsPerPage(selected.intValue());
-                getModel().setCurrentPage(0);
-                reset();
-            }
-        };
-    }
-    
+        
 }

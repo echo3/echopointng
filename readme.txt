@@ -3,6 +3,10 @@
 EchoPointNG Read Me
 ====================================================
 
+------ Version 2.2.0 rc2 --------------
+
+Moved rowsPerPage select to PageableTableNavigation where it belongs, it should not be in the model.
+
 ------ Version 2.2.0 rc1 --------------
 
 Added features to PageableTableModel to turn on/off rowsPerPage selector
