@@ -1017,7 +1017,7 @@ EP.Event.addHandler = function(eventType, elem, obj) {
 	
 	var f = EP.Event.dispatchEventHandler;
 	if (elem.addEventListener) { // MOZ
-		elem.addEventListener(eventType, f, true);
+		elem.addEventListener(eventType, f, false);
 	} else if (elem.attachEvent) { // IE
 		elem.attachEvent("on" + eventType, f);
 	}
@@ -1034,7 +1034,7 @@ EP.Event.removeHandler = function(eventType, elem) {
 	eventType = EP.Event.transmogifryEventType(eventType);
 	var f = EP.Event.dispatchEventHandler;
 	if (elem.removeEventListener) { // MOZ
-		elem.removeEventListener(eventType,f,true);
+		elem.removeEventListener(eventType,f,false);
 	} else if (elem.detachEvent) { // IE
 		elem.detachEvent("on" + eventType,f);
 	}
