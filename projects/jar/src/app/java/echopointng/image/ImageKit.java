@@ -669,11 +669,14 @@ public class ImageKit {
 		imageMediaTracker.addImage(srcImage, mediaTrackerIDs);
 		try {
 			imageMediaTracker.waitForID(mediaTrackerIDs);
+			if (imageMediaTracker.isErrorID(mediaTrackerIDs))
+				return false;
 		} catch (Exception e) {
 			return false;
+		} finally {
+			imageMediaTracker.removeImage(srcImage, mediaTrackerIDs);
 		}
-		if (imageMediaTracker.isErrorID(mediaTrackerIDs))
-			return false;
+		
 		return true;
 	}
 

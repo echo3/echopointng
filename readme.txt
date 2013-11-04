@@ -3,6 +3,10 @@
 EchoPointNG Read Me
 ====================================================
 
+------ Version 2.3.0  --------------
+Fix minor memory leak with images.
+
+
 ------ Version 2.2.0 rc2 --------------
 
 Moved rowsPerPage select to PageableTableNavigation where it belongs, it should not be in the model.
