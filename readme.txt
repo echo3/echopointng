@@ -3,9 +3,9 @@
 EchoPointNG Read Me
 ====================================================
 
------- Version 2.3.0  --------------
+------ Version 2.2.1-a6d923b2d  --------------
 Fix minor memory leak with images.
-
+Bugfix: Selection clear removed content.
 
 ------ Version 2.2.0 rc2 --------------
 
