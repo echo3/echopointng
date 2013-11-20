@@ -21,7 +21,7 @@
  
 <project name="EchoPointNG" default="default" basedir=".">
 
-    <property name="version"             value="2.2.0rc2"/>
+    <property name="version"             value="2.2.1-a6d923b2d"/>
     <property name="debug"               value="yes"/>
 
     <!-- Directories -->
