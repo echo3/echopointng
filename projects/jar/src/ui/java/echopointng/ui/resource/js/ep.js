@@ -845,8 +845,8 @@ EP.Event.hrefActionHandler = function(elementId,actionName,actionValue) {
 	if (! EchoClientEngine.verifyInput(elementId)) {
         return;
     }	
-    if (document.selection && document.selection.clear) {
-        document.selection.clear();
+    if (document.selection && document.selection.empty) {
+        document.selection.empty();
     }
     actionValue = (actionValue) ? actionValue : "";
     EchoClientMessage.setActionValue(elementId, actionName,actionValue);
@@ -877,8 +877,8 @@ EP.Event.hrefActionHandler = function(elementId,actionName,actionValue) {
  */
 EP.Event.doAction = function(echoEvent) {
 	EP.Event.cancelEvent(echoEvent);
-    if (document.selection && document.selection.clear) {
-        document.selection.clear();
+    if (document.selection && document.selection.empty) {
+        document.selection.empty();
     }
     var eventTarget = echoEvent.registeredTarget;
     var idArray   = eventTarget.getAttribute("id").split("|"); 
@@ -900,8 +900,8 @@ EP.Event.doAction = function(echoEvent) {
  * that as actionValue
  */
 EP.Event.doSelectIndexAction = function(echoEvent) {
-    if (document.selection && document.selection.clear) {
-        document.selection.clear();
+    if (document.selection && document.selection.empty) {
+        document.selection.empty();
     }
     var selectTarget = echoEvent.registeredTarget;
     var idArray      = selectTarget.getAttribute("id").split("|"); 
@@ -923,8 +923,8 @@ EP.Event.doSelectIndexAction = function(echoEvent) {
  * value of the selected option as the actionValue.
  */
 EP.Event.doSelectValueAction = function(echoEvent) {
-    if (document.selection && document.selection.clear) {
-        document.selection.clear();
+    if (document.selection && document.selection.empty) {
+        document.selection.empty();
     }
     var selectTarget = echoEvent.registeredTarget;
     var idArray      = selectTarget.getAttribute("id").split("|"); 
