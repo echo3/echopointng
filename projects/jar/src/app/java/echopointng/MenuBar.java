@@ -60,6 +60,7 @@ public class MenuBar extends Menu implements Positionable {
 	static {
 		MutableStyleEx style = new MutableStyleEx(Menu.DEFAULT_STYLE);
 		style.setProperty(PROPERTY_HORIZONTAL, true);
+        style.setProperty(PROPERTY_FLIP, false);
 
 		//style.setProperty(PROPERTY_BACKGROUND,ColorKit.makeColor("#D4D0C8"));
 

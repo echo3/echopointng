@@ -420,6 +420,7 @@ public class MenuItemPeer extends AbstractEchoPointContainerPeer implements Acti
 			itemElement.setAttribute("leftOffset", String.valueOf(rc.getRP(Menu.PROPERTY_LEFT_OFFSET, fallbackStyle)));
 			itemElement.setAttribute("topOffset", String.valueOf(rc.getRP(Menu.PROPERTY_TOP_OFFSET, fallbackStyle)));
 			itemElement.setAttribute("horizontal", String.valueOf(rc.getRP(Menu.PROPERTY_HORIZONTAL, fallbackStyle)));
+            itemElement.setAttribute("flip", String.valueOf(rc.getRP(Menu.PROPERTY_FLIP, fallbackStyle)));
 			itemElement.setAttribute("keepAlive", String.valueOf(rc.getRP(Menu.PROPERTY_KEEP_ALIVE, fallbackStyle)));
 			itemElement.setAttribute("submenuImageBordered", String.valueOf(rc.getRP(Menu.PROPERTY_SUBMENU_IMAGE_BORDERED, fallbackStyle)));
 			itemElement.setAttribute("clickToOpen", String.valueOf(clickToOpen));

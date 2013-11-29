@@ -147,6 +147,7 @@ EPMI.MessageProcessor.processInit = function(initMessageElement) {
         	
         	mi.isRootMenu = item.getAttribute("isRootMenu") === "true";
         	mi.horizontal = item.getAttribute("horizontal")==="true";
+            mi.flip = item.getAttribute("flip")==="true";
         	mi.keepAlive = item.getAttribute("keepAlive")==="true";
         	mi.clickToOpen = item.getAttribute("clickToOpen")==="true";
         	mi.submenuClickToOpen = item.getAttribute("submenuClickToOpen")==="true";
@@ -568,10 +569,10 @@ EPMI.prototype.showBoxImpl = function() {
 	if (this.parent && this.parent.eBox && ! horizontal) { 
 		itemWidth = EP.getWidth(this.parent.eBox);
 	}
-	
+
 	var x = targetX + this.leftOffset;
 	// if the Menu is vertical and not the root Menu, then adjust by the width
-	if (! horizontal && this.getLevel() > 0) {
+	if (!horizontal && this.getLevel() > 0) {
 		x += itemWidth;
 	}
 	// if too wide then try to align to left of item
@@ -583,11 +584,11 @@ EPMI.prototype.showBoxImpl = function() {
 		}
 	}
 	
-	var y = targetY + this.topOffset;
+	var y = this.flip ? targetY - this.topOffset : targetY + this.topOffset;
 	// if the menu is horizontal or a top level one then
 	// adjust by the height
 	if (horizontal || this.getLevel() === 0) {
-		y += itemHeight;
+		y = this.flip ? y - boxHeight : y + itemHeight;
 	}
 	
 	EP.debug("x = " + x + " y=" + y + " targetX=" + targetX + " targetY="+targetY);

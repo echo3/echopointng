@@ -89,6 +89,8 @@ public class Menu extends MenuItem {
 
 	public static final String PROPERTY_HORIZONTAL = "horizontal";
 
+    public static final String PROPERTY_FLIP = "flip";
+
 	public static final String PROPERTY_KEEP_ALIVE = "keepAlive";
 
 	public static final String PROPERTY_LEFT_OFFSET = "leftOffset";
@@ -151,6 +153,7 @@ public class Menu extends MenuItem {
 
 		style.setProperty(PROPERTY_TEXT_ALIGNMENT, new Alignment(Alignment.CENTER, Alignment.CENTER));
 		style.setProperty(PROPERTY_HORIZONTAL, false);
+        style.setProperty(PROPERTY_FLIP, false);
 		style.setProperty(PROPERTY_STYLE_CHILDREN, true);
 
 		DEFAULT_STYLE = style;
@@ -396,6 +399,13 @@ public class Menu extends MenuItem {
 		return ComponentEx.getProperty(this, PROPERTY_HORIZONTAL, false);
 	}
 
+    /**
+     * @return true if the Menu is flipped over
+     */
+    public boolean isFlipped() {
+        return ComponentEx.getProperty(this, PROPERTY_FLIP, false);
+    }
+
 	/**
 	 * @return true if drop down menu boxes will stay alive (ie visible) when
 	 *         the mouse moves out of them
@@ -457,6 +467,13 @@ public class Menu extends MenuItem {
 	public void setHorizontal(boolean newValue) {
 		ComponentEx.setProperty(this, PROPERTY_HORIZONTAL, newValue);
 	}
+
+    /**
+     * Sets the whether the <code>Menu</code> is flipped over
+     */
+    public void setFlipped(boolean newValue) {
+        ComponentEx.setProperty(this, PROPERTY_FLIP, newValue);
+    }
 
 	/**
 	 * Set to true if drop down menu boxes will stay alive (ie visible) when the

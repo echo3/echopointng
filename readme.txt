@@ -3,6 +3,9 @@
 EchoPointNG Read Me
 ====================================================
 
+------ Version 2.2.2  --------------
+Support for popup menus flipping upside instead downside
+
 ------ Version 2.2.1-a6d923b2d  --------------
 Fix minor memory leak with images.
 Bugfix: Selection clear removed content.
