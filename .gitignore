@@ -1,0 +1,6 @@
+.idea
+*-ide-plugin.xml
+build
+dist
+projects/jar/bin
+projects/test/WEB-INF

@@ -26,9 +26,9 @@
 
     <!-- Directories -->
     <property name="lib_dir"             value="lib"/>
-    <property name="dist_dir"            value="dist_jar"/>
-    <property name="build_dir"           value="dist_build"/>
-    <property name="javadoc_dir"         value="dist_javadoc"/>
+    <property name="dist_dir"            value="dist"/>
+    <property name="build_dir"           value="build"/>
+    <property name="javadoc_dir"         value="build/javadoc"/>
 
 
     <!-- Project Directories -->
@@ -111,6 +111,8 @@
         <delete dir="${build_dir}"/>
         <delete dir="${dist_dir}"/>
         <delete dir="${javadoc_dir}"/>
+        <delete dir="projects/jar/bin"/>
+        <delete dir="projects/test/WEB-INF"/>
 
 		<mkdir  dir="${build_dir}"/>
 		<mkdir  dir="${build_dir}/binary"/>
@@ -132,7 +134,7 @@
 
 	<delete dir="${dest.jar}"/>
  	<mkdir dir="${dest.jar}"/>
-        <javac srcdir="${src.jar}" destdir="${dest.jar}" debug="${debug}" source="1.4" deprecation="yes">
+        <javac srcdir="${src.jar}" destdir="${dest.jar}" debug="${debug}" source="1.4" target="1.4" deprecation="yes">
             <classpath refid="library_class_path"/>
         </javac>
 
@@ -168,7 +170,7 @@
         </copy>
         <copy file="${build_dir}/binary/jar/echopointng-${version}.jar" todir="${dest.test}/lib" />
 
-        <javac srcdir="${src.test}" destdir="${dest.test}/classes" debug="${debug}" source="1.4" deprecation="yes">
+        <javac srcdir="${src.test}" destdir="${dest.test}/classes" debug="${debug}" source="1.4" target="1.4" deprecation="yes">
             <classpath refid="library_class_path"/>
         </javac>
 
@@ -224,18 +226,7 @@
         <mkdir dir="${build_dir}/source"/>
         <copy file="${licence_doc}" todir="${build_dir}/source"/>
         <copy todir="${build_dir}/source">
-            <fileset dir="." defaultexcludes="yes">
-                <exclude name="${build_dir}/**"/>
-                <exclude name="${dist_dir}/**"/>
-                <exclude name="${javadoc_dir}/**"/>
-                <exclude name="CVS*/**"/>
-                <exclude name="dist_website*/**"/>
-                <exclude name="temp*/**"/>
-                <exclude name="contribs*/**"/>
-                <exclude name="oldversions*/**"/>
-                <exclude name="citydesk*/**"/>
-                <exclude name="bin*/**"/>
-                <exclude name="lib*/**"/>
+            <fileset dir="projects" defaultexcludes="yes">
                 <exclude name="**/*.nbattrs"/>
                 <exclude name="**/*.jar"/>
                 <exclude name="**/*.class"/>
@@ -244,32 +235,9 @@
         </copy>       
         <mkdir dir="${dist_dir}"/>
         <!-- Zip file -->
-        <zip zipfile="${dist_dir}/echopointng-src-${version}.zip" >
+        <jar zipfile="${build_dir}/binary/jar/echopointng-${version}-sources.jar" >
 			<zipfileset dir="${build_dir}/source" prefix="echopointng" />
-		</zip>
-    </target>
-
-	<!-- ************************************************************************************************** -->
-    <!-- Create a binary release. -->
-    <target name="releaseBin" depends="compile" description="Create a Binary release.">
-        <mkdir dir="${build_dir}/binary/lib"/>
-        <mkdir dir="${build_dir}/binary/jar"/>
-        <mkdir dir="${build_dir}/binary/war"/>
-        <copy file="${licence_doc}" todir="${build_dir}/binary"/>
-
-        <!-- Copy the third party jars into the release directory. -->
-        <copy todir="${build_dir}/binary/lib">
-            <fileset dir="${lib_dir}">
-                <patternset>
-			        <include name="*.jar"/>
-                </patternset>
-            </fileset>
-        </copy>
-
-        <!-- Zip file -->
-		<zip zipfile="${dist_dir}/echopointng-bin-${version}.zip">
-			<zipfileset dir="${build_dir}/binary" prefix="echopointng" />
-		</zip>
+		</jar>
     </target>
 
 
@@ -279,18 +247,38 @@
         <mkdir dir="${dist_dir}"/>
         <copy file="${licence_doc}" todir="${javadoc_dir}"/>
         <!-- Zip file -->
-        <zip zipfile="${dist_dir}/echopointng-docs-${version}.zip" >
-			<zipfileset dir="${javadoc_dir}" prefix="echopointng" />
-		</zip>
+        <jar zipfile="${build_dir}/binary/jar/echopointng-${version}-javadoc.jar" >
+			<zipfileset dir="${javadoc_dir}/docs" />
+		</jar>
     </target>
 
 	<!-- ************************************************************************************************** -->
     <target name="release" 
-            depends="start,releaseSrc,releaseJavaDoc,releaseBin"
+            depends="start,compile, releaseSrc,releaseJavaDoc"
             description="Create all release packages">
 		<echo>
 		Release Version : ${version}
 		</echo>
+
+        <mkdir dir="${build_dir}/binary/lib"/>
+        <mkdir dir="${build_dir}/binary/jar"/>
+        <mkdir dir="${build_dir}/binary/war"/>
+        <copy file="${licence_doc}" todir="${build_dir}/binary"/>
+
+        <!-- Copy the third party jars into the release directory. -->
+        <copy todir="${build_dir}/binary/lib">
+            <fileset dir="${lib_dir}">
+                <patternset>
+                    <include name="*.jar"/>
+                </patternset>
+            </fileset>
+        </copy>
+
+        <!-- Zip file -->
+        <zip zipfile="${dist_dir}/echopointng-${version}.zip">
+            <zipfileset dir="${build_dir}/binary" prefix="echopointng-${version}" />
+        </zip>
+
 	</target>
 
 	<!-- ************************************************************************************************** -->
