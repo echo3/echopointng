@@ -662,19 +662,21 @@ public class ImageKit {
 		if (srcImage == null)
 			return false;
 
+        int currentId;
 		synchronized (imageObserver) {
 			mediaTrackerIDs++;
+            currentId = mediaTrackerIDs;
 		}
 		
-		imageMediaTracker.addImage(srcImage, mediaTrackerIDs);
+		imageMediaTracker.addImage(srcImage, currentId);
 		try {
-			imageMediaTracker.waitForID(mediaTrackerIDs);
-			if (imageMediaTracker.isErrorID(mediaTrackerIDs))
+			imageMediaTracker.waitForID(currentId);
+			if (imageMediaTracker.isErrorID(currentId))
 				return false;
 		} catch (Exception e) {
 			return false;
 		} finally {
-			imageMediaTracker.removeImage(srcImage, mediaTrackerIDs);
+			imageMediaTracker.removeImage(srcImage, currentId);
 		}
 		
 		return true;
