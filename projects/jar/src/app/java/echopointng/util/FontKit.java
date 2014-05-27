@@ -30,6 +30,7 @@ package echopointng.util;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import nextapp.echo2.app.Component;
@@ -495,10 +496,10 @@ public class FontKit {
 
 		if (index != tokens.length-1)
 			return false;
-			
+
 		return true;
 	}
-	
+
 	/**
 	 * This will return a Font.Typeface object by first rtying to match
 	 * the names against System provided ones and failing that it will
@@ -634,7 +635,7 @@ public class FontKit {
      * Returns a font style integer value of -1 if it cant be found
      */
     private static int _getFontStyle(String styleName) {
-    	Integer styleInt = (Integer) FONTSTYLE_TEXT_TO_CONSTANT.get(styleName.toUpperCase());
+    	Integer styleInt = (Integer) FONTSTYLE_TEXT_TO_CONSTANT.get(styleName.toUpperCase(Locale.ENGLISH));
     	if (styleInt == null)
     		return -1;
     	return styleInt.intValue();
