@@ -490,7 +490,7 @@ public class FontKit {
 		// font size
 		String fontSize = font;
 		if (! ExtentKit.isExtent(fontSize)) {
-			//if (!_isInteger(fontSize))
+			if (!_isInteger(fontSize))
 				return false;
 		}
 
