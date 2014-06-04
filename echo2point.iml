@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/projects/jar/src/app/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/projects/jar/src/app/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/projects/jar/src/ui/java" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" scope="TEST" name="junit" level="project" />
+    <orderEntry type="library" exported="" name="Echo2" level="project" />
+    <orderEntry type="library" name="servlet-api-2.5" level="project" />
+    <orderEntry type="library" name="javax.servlet.jsp-api-2.3.1" level="project" />
+  </component>
+</module>
+

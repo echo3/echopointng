@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Echo2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/Echo2_App.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Echo2_WebContainer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Echo2_WebRender.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
