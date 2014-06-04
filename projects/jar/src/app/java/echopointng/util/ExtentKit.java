@@ -30,6 +30,8 @@ package echopointng.util;
 
 import nextapp.echo2.app.Extent;
 
+import java.util.Locale;
+
 /** 
  * <code>ExtentKit</code> is a utility class to help with Extent
  * manipulation
@@ -56,7 +58,7 @@ public class ExtentKit {
 		if (! isExtent(extentString))
 			throw new IllegalArgumentException("The extentString is invalid : " + extentString);
 	
-		extentString = extentString.trim().toLowerCase();
+		extentString = extentString.trim().toLowerCase(Locale.ENGLISH);
 		String digitBit = _parseIntegerPrefix(extentString);
 		String unitBit = _parseIntegerPostfix(extentString);
 		
@@ -94,7 +96,7 @@ public class ExtentKit {
 	public static boolean isExtent(String extentString) {
 		if (extentString == null)
 			return false;
-		extentString = extentString.trim().toLowerCase();
+		extentString = extentString.trim().toLowerCase(Locale.ENGLISH);
 		String digitBit = _parseIntegerPrefix(extentString);
 		String unitBit = _parseIntegerPostfix(extentString);
 		if (! _isInteger(digitBit))

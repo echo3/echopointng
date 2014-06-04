@@ -29,6 +29,7 @@ package echopointng.stylesheet.propertypeer;
  */
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import nextapp.echo2.app.Alignment;
@@ -74,8 +75,8 @@ public class AlignmentPeer extends AbstractCssPropertyPeer {
 			return true;
 		String[] tokens = CssObjectDeclarationParser.parse(propertyValue);
 		if (tokens.length == 3 && tokens[0].equalsIgnoreCase("alignment")) {
-			String h = tokens[1].trim().toUpperCase();
-			String v = tokens[2].trim().toUpperCase();
+			String h = tokens[1].trim().toUpperCase(Locale.ENGLISH);
+			String v = tokens[2].trim().toUpperCase(Locale.ENGLISH);
 			return HORIZONTAL_CONSTANTS.containsKey(h) && VERTICAL_CONSTANTS.containsKey(v);
 		}
 		return false;
@@ -85,8 +86,8 @@ public class AlignmentPeer extends AbstractCssPropertyPeer {
 		if (isNullString(propertyValue))
 			return null;
 		String[] tokens = CssObjectDeclarationParser.parse(propertyValue);
-		String hs = tokens[1].trim().toUpperCase();
-		String vs = tokens[2].trim().toUpperCase();
+		String hs = tokens[1].trim().toUpperCase(Locale.ENGLISH);
+		String vs = tokens[2].trim().toUpperCase(Locale.ENGLISH);
 		int ha = Alignment.DEFAULT;
 		int va = Alignment.DEFAULT;
 		if (HORIZONTAL_CONSTANTS.containsKey(hs))

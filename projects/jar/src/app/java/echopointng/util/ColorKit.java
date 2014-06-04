@@ -28,11 +28,11 @@ package echopointng.util;
  * the terms of any one of the MPL, the GPL or the LGPL.
  */
 import echopointng.util.collections.ConcurrentReaderHashMap;
-
-import java.util.Map;
-
 import nextapp.echo2.app.Color;
 import nextapp.echo2.app.Component;
+
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * A utility to class to help with Color manipulation
@@ -106,7 +106,7 @@ public class ColorKit {
 		String hex = Integer.toHexString(i);
 		if (hex.length() < 2)
 			hex = "0" + hex;
-		return hex.toUpperCase();
+		return hex.toUpperCase(Locale.ENGLISH);
 	}
 	
 	/*
@@ -127,7 +127,7 @@ public class ColorKit {
 	 * value.
 	 */
 	private static boolean _isHexInteger(String propertyValue) {
-		propertyValue = propertyValue.trim().toLowerCase();
+		propertyValue = propertyValue.trim().toLowerCase(Locale.ENGLISH);
 		if (propertyValue.indexOf("0x") == 0)
 			propertyValue = propertyValue.substring(2);
 
@@ -328,7 +328,7 @@ public class ColorKit {
 
 		b.append("#");
 		b.append(makeHexColor(color));
-		return b.toString().toUpperCase();
+		return b.toString().toUpperCase(Locale.ENGLISH);
 	}
 
 	/**
@@ -365,7 +365,7 @@ public class ColorKit {
 		b.append(_toHexString(color.getGreen()));
 		b.append(_toHexString(color.getBlue()));
 
-		return b.toString().toLowerCase();
+		return b.toString().toLowerCase(Locale.ENGLISH);
 	}
 	
 	/**
@@ -393,7 +393,7 @@ public class ColorKit {
 		if (colorString == null)
 			throw new IllegalArgumentException("Illegal null color string");
 		
-		colorString = colorString.trim().toLowerCase();	
+		colorString = colorString.trim().toLowerCase(Locale.ENGLISH);
 		Color color = (Color) colorMap.get(colorString);
 		if (color != null)
 			return color;
@@ -507,7 +507,7 @@ public class ColorKit {
 		// since we know we have produced a correct
 		// color string we can go direct to the cache!
 		//
-		String colorString = buf.toString().toLowerCase();
+		String colorString = buf.toString().toLowerCase(Locale.ENGLISH);
 		Color color = (Color) colorMap.get(colorString);
 		if (color == null) {
 			color = new Color(r,g,b);
@@ -534,7 +534,7 @@ public class ColorKit {
 		// since we know we have produced a correct
 		// color string we can go direct to the cache!
 		//
-		String colorString = buf.toString().toLowerCase();
+		String colorString = buf.toString().toLowerCase(Locale.ENGLISH);
 		Color color = (Color) colorMap.get(colorString);
 		if (color == null) {
 			color = new Color(rgb);

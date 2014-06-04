@@ -30,6 +30,7 @@ package echopointng.stylesheet.propertypeer;
  */
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import nextapp.echo2.app.Extent;
@@ -74,7 +75,7 @@ protected boolean canConvert(CssObjectIntrospector ci, String propertyValue) {
 			String objType = tokens[0]; 
 			String imageRef = tokens[1];
 			
-			return objType.toLowerCase().equalsIgnoreCase("fillimage") &&
+			return objType.toLowerCase(Locale.ENGLISH).equalsIgnoreCase("fillimage") &&
 					imagePeer.canConvert(ci,imageRef);
 			
 		} else if (tokens.length == 5) {
@@ -83,7 +84,7 @@ protected boolean canConvert(CssObjectIntrospector ci, String propertyValue) {
 			String horizontalOffset = tokens[2];
 			String verticalOffset = tokens[3];
 			
-			return objType.toLowerCase().equals("fillimage") &&
+			return objType.toLowerCase(Locale.ENGLISH).equals("fillimage") &&
 					imagePeer.canConvert(ci,imageRef) &&
 					ExtentKit.isExtent(horizontalOffset) &&
 					ExtentKit.isExtent(verticalOffset);
@@ -106,7 +107,7 @@ protected boolean canConvert(CssObjectIntrospector ci, String propertyValue) {
 			String imageRef = tokens[1];
 			Extent horizontalOffset = ExtentKit.makeExtent(tokens[2]);
 			Extent verticalOffset = ExtentKit.makeExtent(tokens[3]);
-			int repeat = getIntFromMap(REPEAT_CONSTANTS, tokens[4].toUpperCase());
+			int repeat = getIntFromMap(REPEAT_CONSTANTS, tokens[4].toUpperCase(Locale.ENGLISH));
 
 			ImageReference imageRefObj = (ImageReference) imagePeer.getObject(ci, imageRef);
 			return new FillImage(imageRefObj, horizontalOffset, verticalOffset, repeat);

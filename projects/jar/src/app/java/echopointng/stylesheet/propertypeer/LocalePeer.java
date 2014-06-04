@@ -27,9 +27,9 @@ package echopointng.stylesheet.propertypeer;
  * the provisions above, a recipient may use your version of this file under
  * the terms of any one of the MPL, the GPL or the LGPL.
  */
-import java.util.Locale;
-
 import echopointng.stylesheet.CssObjectIntrospector;
+
+import java.util.Locale;
 
 
 /**
@@ -59,13 +59,13 @@ public class LocalePeer extends AbstractCssPropertyPeer {
 	}
 	/* --- object conversion --- */
 	protected Object getObject(CssObjectIntrospector ci, String propertyValue) {
-		propertyValue = propertyValue.trim().toLowerCase();
+		propertyValue = propertyValue.trim().toLowerCase(Locale.ENGLISH);
 		if (isNullString(propertyValue))
 			return null;
 
 		Locale locales[] = Locale.getAvailableLocales();
 		for (int i = 0; i < locales.length; i++) {
-			if (locales[i].toString().toLowerCase().equals(propertyValue))
+			if (locales[i].toString().toLowerCase(Locale.ENGLISH).equals(propertyValue))
 				return locales[i];
 		}
 		return null;

@@ -28,16 +28,17 @@ package echopointng.stylesheet.propertypeer;
  * the terms of any one of the MPL, the GPL or the LGPL.
  */
 
-import java.util.Iterator;
-import java.util.Map;
-
-import nextapp.echo2.app.Extent;
 import echopointng.stylesheet.CssInvalidValueException;
 import echopointng.stylesheet.CssObjectIntrospector;
 import echopointng.stylesheet.CssPropertyPeer;
 import echopointng.stylesheet.CssPropertyPeerLoader;
 import echopointng.util.ExtentKit;
 import echopointng.util.TokenizerKit;
+import nextapp.echo2.app.Extent;
+
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * <code>AbstractCssPropertyPeer</code> is a base class for
@@ -132,10 +133,10 @@ public abstract class AbstractCssPropertyPeer implements CssPropertyPeer {
 
         if (conversionClass.isAssignableFrom(constantValue.getClass()))
             return constantValue;
-        constantValue = ci.getConstantValue(propertyValue.toUpperCase());
+        constantValue = ci.getConstantValue(propertyValue.toUpperCase(Locale.ENGLISH));
         if (conversionClass.isAssignableFrom(constantValue.getClass()))
             return constantValue;
-        constantValue = ci.getConstantValue(propertyValue.toLowerCase());
+        constantValue = ci.getConstantValue(propertyValue.toLowerCase(Locale.ENGLISH));
         if (conversionClass.isAssignableFrom(constantValue.getClass()))
         	return constantValue;
         throw new CssInvalidValueException("No suitable class field constant found for " + propertyValue,null,lineNo);

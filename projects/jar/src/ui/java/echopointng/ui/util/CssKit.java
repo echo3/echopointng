@@ -30,6 +30,7 @@ package echopointng.ui.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 /** 
@@ -49,7 +50,7 @@ public class CssKit {
 		String[] segments = split(cssAttributeName,"-");
 		sb.append(segments[0]);
 		for (int i = 1; i < segments.length; i++) {
-			sb.append(segments[i].substring(0,1).toUpperCase());
+			sb.append(segments[i].substring(0,1).toUpperCase(Locale.ENGLISH));
 			sb.append(segments[i].substring(1));
 		}
 		return sb.toString();

@@ -43,6 +43,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import nextapp.echo2.app.ApplicationInstance;
@@ -121,7 +122,7 @@ public class URLImageReference extends StreamImageReference {
         if (extensionDelimiterPosition == -1) {
             throw new IllegalArgumentException("Invalid content type (URL resource has no extension: " + resourceName + ")");
         } else {
-            String extension = resourceName.substring(extensionDelimiterPosition + 1).toLowerCase();
+            String extension = resourceName.substring(extensionDelimiterPosition + 1).toLowerCase(Locale.ENGLISH);
             contentType = (String) extContentType.get(extension);
             if (contentType == null) {
                 throw new IllegalArgumentException("Invalid content type (no matching content type: " + resourceName + ")");

@@ -28,15 +28,15 @@ package echopointng.util;
  * the terms of any one of the MPL, the GPL or the LGPL.
  */
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
+import echopointng.util.collections.ConcurrentReaderHashMap;
 import nextapp.echo2.app.Component;
 import nextapp.echo2.app.Extent;
 import nextapp.echo2.app.Font;
 
-import echopointng.util.collections.ConcurrentReaderHashMap;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * A utility to class to help with Font manipulation
@@ -523,7 +523,7 @@ public class FontKit {
 		if (tokens.length == 0)
 			return null;
 		Font.Typeface typeFace;
-		typeFace = getSystemTypeface(tokens[0].toUpperCase());
+		typeFace = getSystemTypeface(tokens[0].toUpperCase(Locale.ENGLISH));
 		//
 		// if we have only one token and it matches a System
 		// Typeface, then we will go with it
@@ -567,7 +567,7 @@ public class FontKit {
 	 * always stored in lower case for consistency
 	 */
 	private static Font _getCachedFont(String fontString) {
-		fontString = fontString.trim().toLowerCase();
+		fontString = fontString.trim().toLowerCase(Locale.ENGLISH);
 		Font font = (Font) fontMap.get(fontString);
 		return font;
 	}
@@ -576,7 +576,7 @@ public class FontKit {
 	 * Puts a Font into the shared cache and then returns it
 	 */
 	private static Font _putCachedFont(String fontString, Font font) {
-		fontString = fontString.trim().toLowerCase();
+		fontString = fontString.trim().toLowerCase(Locale.ENGLISH);
 		fontMap.put(fontString, font);
 		return font;
 	}
@@ -622,8 +622,8 @@ public class FontKit {
 	 * @return a TypeFace of null if a system one cannot be found
 	 */
     public static Font.Typeface getSystemTypeface(String name) {
-        if (TYPEFACE_TEXT_TO_CONSTANT.containsKey(name.toUpperCase())) {
-            return (Font.Typeface) TYPEFACE_TEXT_TO_CONSTANT.get(name.toUpperCase());
+        if (TYPEFACE_TEXT_TO_CONSTANT.containsKey(name.toUpperCase(Locale.ENGLISH))) {
+            return (Font.Typeface) TYPEFACE_TEXT_TO_CONSTANT.get(name.toUpperCase(Locale.ENGLISH));
         } else {
             return null;
         }
@@ -634,7 +634,7 @@ public class FontKit {
      * Returns a font style integer value of -1 if it cant be found
      */
     private static int _getFontStyle(String styleName) {
-    	Integer styleInt = (Integer) FONTSTYLE_TEXT_TO_CONSTANT.get(styleName.toUpperCase());
+    	Integer styleInt = (Integer) FONTSTYLE_TEXT_TO_CONSTANT.get(styleName.toUpperCase(Locale.ENGLISH));
     	if (styleInt == null)
     		return -1;
     	return styleInt.intValue();

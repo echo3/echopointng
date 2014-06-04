@@ -28,10 +28,7 @@ package echopointng.util;
  * the terms of any one of the MPL, the GPL or the LGPL.
  */
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 import nextapp.echo2.app.Component;
 import nextapp.echo2.app.ApplicationInstance;
@@ -313,7 +310,7 @@ public class ComponentKit {
 
 		// try setXxxxXxxx
 		sb  = new StringBuffer("set");
-		sb.append(propertyName.substring(0,1).toUpperCase());
+		sb.append(propertyName.substring(0,1).toUpperCase(Locale.ENGLISH));
 		sb.append(propertyName.substring(1));
 		methodName = sb.toString();
 		try {
@@ -324,9 +321,9 @@ public class ComponentKit {
 		}
 		// try setXxxxxx
 		sb  = new StringBuffer("set");
-		sb.append(propertyName.substring(0,1).toUpperCase());
+		sb.append(propertyName.substring(0,1).toUpperCase(Locale.ENGLISH));
 		if (propertyName.length() >= 2) {
-			sb.append(propertyName.substring(1).toLowerCase());
+			sb.append(propertyName.substring(1).toLowerCase(Locale.ENGLISH));
 		}
 		methodName = sb.toString();
 		try {

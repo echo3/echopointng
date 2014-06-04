@@ -29,6 +29,7 @@ package echopointng.stylesheet.propertypeer;
  */
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import nextapp.echo2.app.Border;
@@ -87,7 +88,7 @@ public class BorderPeer extends AbstractCssPropertyPeer {
 		if (tokens.length == 4 && tokens[0].equalsIgnoreCase("border")) {
 			String size = tokens[1].trim();
 			String color = tokens[2].trim();
-			String style = tokens[3].trim().toUpperCase();
+			String style = tokens[3].trim().toUpperCase(Locale.ENGLISH);
 			
 			return ExtentKit.isExtent(size) && ColorKit.isColor(color) && 
 				(STYLE_CONSTANTS.containsKey(style) || STYLE_CONSTANT_ALTERNATES.containsKey(style));
@@ -101,7 +102,7 @@ public class BorderPeer extends AbstractCssPropertyPeer {
 		String[] tokens = CssObjectDeclarationParser.parse(propertyValue);
 		String size = tokens[1].trim();
 		String color = tokens[2].trim();
-		String style = tokens[3].trim().toUpperCase();
+		String style = tokens[3].trim().toUpperCase(Locale.ENGLISH);
 			
 		int styleInt = Border.STYLE_NONE;
 		if (STYLE_CONSTANTS.containsKey(style))

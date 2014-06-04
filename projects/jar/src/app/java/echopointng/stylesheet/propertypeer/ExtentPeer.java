@@ -31,6 +31,8 @@ import nextapp.echo2.app.Extent;
 import echopointng.stylesheet.CssObjectIntrospector;
 import echopointng.util.ExtentKit;
 
+import java.util.Locale;
+
 /**
  * <code>ExtentPeer</code> works with Extent objects
  */
@@ -45,14 +47,14 @@ public class ExtentPeer extends AbstractCssPropertyPeer {
 	
 	/* --- validity test --- */
 	protected boolean canConvert(CssObjectIntrospector ci, String propertyValue) {
-		propertyValue = propertyValue.trim().toLowerCase();
+		propertyValue = propertyValue.trim().toLowerCase(Locale.ENGLISH);
 		if (isNullString(propertyValue))
 			return true;
 		return ExtentKit.isExtent(propertyValue);
 	}
 	/* --- object conversion --- */
 	protected Object getObject(CssObjectIntrospector ci, String propertyValue) {
-		propertyValue = propertyValue.trim().toLowerCase();
+		propertyValue = propertyValue.trim().toLowerCase(Locale.ENGLISH);
 		if (isNullString(propertyValue))
 			return null;
 		return ExtentKit.makeExtent(propertyValue);
