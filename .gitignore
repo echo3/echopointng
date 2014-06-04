@@ -1,4 +1,8 @@
-.idea
+.idea/copyright
+.idea/inspectionProfiles
+.idea/scopes
+.idea/misc.xml
+.idea/workspace.xml
 *-ide-plugin.xml
 build
 dist
